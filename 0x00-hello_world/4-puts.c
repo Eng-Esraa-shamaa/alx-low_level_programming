@@ -1,8 +1,9 @@
-#include <stdio.h>
+#include <stido.h>
 /**
  *main - the main function which returns zero
+ *Description:this function is to print out statement and return zero
  * puts function- used to print statement
- * return: should return zero
+ * Return: should return zero
   */
 int main(void)
 {
