@@ -1,7 +1,7 @@
-#include <stido.h>
+#include <stdio.h>
 /**
  *main - the main function which returns zero
- *Description:this function is to print out statement and return zero
+ * Description :the function used to return zero and print out statement
  * puts function- used to print statement
  * Return: should return zero
   */
