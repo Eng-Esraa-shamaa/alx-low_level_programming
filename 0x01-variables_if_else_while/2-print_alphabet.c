@@ -1,17 +1,18 @@
-#include<stdio.h>
+#include <stdio.h>
 /**
-*main -print lowercase letters
+*main - print lowercase letters
+*putchar - print characters which is lowercase
 *Description: print only lowercase alphabet
 *Return: zero only when success
 */
 int main(void)
 {
-char letter = 'a';
+char alphabet = 'a';
 
-while(letter <= 'z')
+while (alphabet <= 'z')
 {
-putchar(letter);
-letter++;
+putchar(alphabet);
+alphabet++;
 }
 putchar('\n');
 return (0);
