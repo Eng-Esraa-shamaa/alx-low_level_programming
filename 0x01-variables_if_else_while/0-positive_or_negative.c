@@ -4,7 +4,7 @@
 /**
 *main - is the main function of the program
 *printf - used to printout the result of the check to the number
-*Description: the program checks the number whether it`s positive or negtaive or zero
+*Description: checking the number whether it is positive or negtaive or zero
 *Return: the function return zero when success
 */
 int main(void)
