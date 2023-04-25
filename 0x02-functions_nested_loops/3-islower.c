@@ -2,6 +2,7 @@
 /**
 *_islower - the main function of the program
 *Description: function check the letter
+*@c: in ascii to checks if it is capital or small
 *Return:zero or one
 */
 int _islower(int c)
