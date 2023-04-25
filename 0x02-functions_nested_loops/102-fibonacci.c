@@ -5,7 +5,7 @@
  */
 int main()
 {
-int i, n;
+int i;
 int x = 1, y= 2;
 
 int next = x + y;
