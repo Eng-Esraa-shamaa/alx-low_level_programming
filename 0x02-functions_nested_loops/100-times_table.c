@@ -1,7 +1,6 @@
 #include "main.h"
 /**
  *print_times_table - main function of program
- *Description: print time tables
  *@n: integer for tables
  *Return: zero
  */
@@ -16,23 +15,20 @@ for (x = 0; x <= n; x++)
 for (y = 0; y <= n; y++)
 {
 z = x * y;
-if ((z > 9) && (z <= 99))
-{
-u = z % 10;
-d = (z - u) / 10;
-_putchar(44);
-_putchar(32);
-_putchar(32);
-_putchar(d + '0');
-_putchar(u + '0');
-}
-else if (z >= 100)
+if (z > 9)
 {
 u = z % 10;
 d = ((z % 100) - u) / 10;
 _putchar(44);
 _putchar(32);
+if ((z > 9) && (z <= 99))
+{
+_putchar(32);
+}
+else
+{
 _putchar('1');
+}
 _putchar(d + '0');
 _putchar(u + '0');
 }
