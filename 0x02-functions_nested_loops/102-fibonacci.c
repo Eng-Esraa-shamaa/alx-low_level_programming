@@ -17,6 +17,7 @@ x = y;
 y = next;
 next = x + y;
 }
+printf("\n");
 return (0);
 }
 
