@@ -9,10 +9,10 @@ int i;
 long x = 1, y = 2;
 
 long next = x + y;
-printf("%ld, %ld, ", x, y);
+printf("%ld, %ld", x, y);
 for (i = 3; i <= 50; ++i)
 {
-printf("%ld, ", next);
+printf(", %ld", next);
 x = y;
 y = next;
 next = x + y;
