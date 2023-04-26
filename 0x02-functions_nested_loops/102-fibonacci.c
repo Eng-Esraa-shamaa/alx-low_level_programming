@@ -6,9 +6,9 @@
 int main(void)
 {
 int i;
-int x = 1, y = 2;
+long x = 1, y = 2;
 
-int next = x + y;
+long next = x + y;
 printf("%ld, %ld, ", x, y);
 for (i = 3; i <= 50; ++i)
 {
