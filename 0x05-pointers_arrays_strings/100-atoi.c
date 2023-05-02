@@ -30,6 +30,6 @@ break;
 }
 i++;
 }
-num2 = num2 * num;
+num2 = num2 *num;
 return (num2);
 }
