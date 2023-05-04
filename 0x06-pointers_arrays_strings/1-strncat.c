@@ -3,6 +3,7 @@
  *_strncat - concatenates two strings
  *@src: the source string
  * @dest: the destination string
+ * @n : number of characters to be concatenated
  *Return: pointer to dest
  */
 char *_strncat(char *dest, char *src, int n)
