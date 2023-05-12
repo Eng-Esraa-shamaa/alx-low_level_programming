@@ -1,7 +1,6 @@
 #include"main.h"
 #include<stdio.h>
 #include<stdlib.h>
-#include<ctype.h>
 /**
  *main - the main function to the program
  *@argv: the array contains arguments
@@ -22,10 +21,7 @@ if (argc > 1)
 			printf("Error\n");
 			return (1);
 		}
-		else
-		{
 			sum = sum + atoi(argv[i]);
-		}
 	}
 	printf("%d\n", sum);
 }
