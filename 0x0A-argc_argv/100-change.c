@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 printf("%d\n", change);
 if (money < 0)
 {
-printf("0\n");
+return (0);
 }
 return (0);
 }
