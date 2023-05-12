@@ -32,20 +32,20 @@ int main(int argc, char *argv[])
 		}
 		if (money - 5 >= 0)
 		{
-			money = money -5;
-			money -= 5;
+			money = money - 5;
+			continue;
 		}
 		if (money - 2 >= 0)
 		{
-			money = money -2;
+			money = money - 2;
 			continue;
 		}
 		money--;
 	}
-	printf("%d\n", change);
-	if (money < 0)
-        {
-                printf("0\n");
-        }
-	return (0);
+printf("%d\n", change);
+if (money < 0)
+{
+printf("0\n");
+}
+return (0);
 }
