@@ -1,6 +1,7 @@
 #include"main.h"
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 /**
  *main - the main function to the program
  *@argv: the array contains arguments
