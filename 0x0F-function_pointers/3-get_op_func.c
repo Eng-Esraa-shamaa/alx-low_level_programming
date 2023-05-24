@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 /**
- *get_op_fun - function to check the symbol
+ *get_op_func - function to check the symbol
  *@s: pointer to a function
  *Return: pointer to the function to be done
  */
