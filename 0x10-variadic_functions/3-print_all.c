@@ -14,6 +14,8 @@ void print_all(const char * const format, ...)
 	int i = 0;
 
 	va_start(typ, format);
+	if (format != NULL)
+	{
 	while (format[i])
 	{
 		switch (format[i])
@@ -44,6 +46,7 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 		separator = ", ";
+	}
 	}
 	va_end(typ);
 	printf("\n");
