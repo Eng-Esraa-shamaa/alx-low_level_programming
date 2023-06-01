@@ -10,7 +10,7 @@ list_t *add_node(list_t **head, const char *str)
 	list_t *duplicated;
 	int len;
 
-	duplicated = (list_t *)malloc(sizeof(list_t));
+	duplicated = malloc(sizeof(list_t));
 	if (duplicated == NULL)
 	{
 		return (NULL);
