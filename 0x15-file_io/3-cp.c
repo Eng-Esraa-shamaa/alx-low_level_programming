@@ -75,12 +75,10 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		w = write(file_to, buff, r);
-		if (w == -1)
+		if (file_to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			free(buff);
-			close_f(file_from);
-			close_f(file_to);
 			exit(99);
 		}
 		r = read(file_from, buff, 1024);
