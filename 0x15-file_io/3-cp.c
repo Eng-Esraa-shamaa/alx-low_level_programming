@@ -86,8 +86,8 @@ int main(int argc, char *argv[])
 		r = read(file_from, buff, 1024);
 	}
 	file_to = open(argv[2], O_WRONLY | O_APPEND);
+	close_f(file_to);
 	free(buff);
 	close_f(file_from);
-	close_f(file_to);
 	return (0);
 }
