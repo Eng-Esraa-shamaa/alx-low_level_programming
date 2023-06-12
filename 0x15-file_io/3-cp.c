@@ -52,7 +52,7 @@ void check_argc(int argc)
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to, r, w;
+	int file_from, file_to, r, w, flag = 1;
 	char *buff;
 
 	check_argc(argc);
@@ -66,8 +66,9 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 	r = read(file_from, buff, 1024);
-	do
+	while (r > 0 || flag)
 	{
+		flag = 0;
 		if (file_from == -1 || r == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
@@ -83,7 +84,7 @@ int main(int argc, char *argv[])
 		}
 		r = read(file_from, buff, 1024);
 		file_to = open(argv[2], O_WRONLY | O_APPEND);
-	}while (r > 0);
+	}
 	close_f(file_to);
 	free(buff);
 	close_f(file_from);
