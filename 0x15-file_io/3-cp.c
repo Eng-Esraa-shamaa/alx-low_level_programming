@@ -50,6 +50,8 @@ int main(int argc, char *argv[])
 	buff = buff_creat(argv[2]);
 	file_from = open(argv[1], O_RDONLY);
 	r = read(file_from, buff, 1024);
+	while (r > 0)
+	{
 	if (file_from == -1 || r == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
@@ -64,8 +66,6 @@ int main(int argc, char *argv[])
 		free(buff);
 		exit(99);
 	}
-	while (r > 0)
-	{
 		r = read(file_from, buff, 1024);
 		file_to = open(argv[2], O_WRONLY | O_APPEND);
 	}
