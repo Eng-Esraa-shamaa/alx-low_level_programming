@@ -4,7 +4,7 @@
 #include <elf.h>
 /**
  *check_elf - check if a file is an elf file or not
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
  *Return: nothing
  */
 void check_elf(unsigned char *e_ident)
@@ -13,19 +13,17 @@ void check_elf(unsigned char *e_ident)
 
 	for (; i < 4; i++)
 	{
-		if (e_ident[i] != 127 &&
-			e_ident[i] != 'E' &&
-			e_ident[i] != 'L' &&
-			e_ident[i] != 'F')
-						{
-							dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
-							exit(98);
-						}
+		if (e_ident[i] != 127 && e_ident[i] != 'E' &&
+			e_ident[i] != 'L' && e_ident[i] != 'F')
+		{
+			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+			exit(98);
+		}
 	}
 }
 /**
  *print_magic - prints a magic
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
  *Return: nothing
  */
 void print_magic(unsigned char *e_ident)
@@ -49,7 +47,7 @@ void print_magic(unsigned char *e_ident)
 }
 /**
  *print_class - func prints a class of an elf
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
  *Return: nothing
  */
 void print_class(unsigned char *e_ident)
@@ -73,7 +71,7 @@ void print_class(unsigned char *e_ident)
 }
 /**
  *print_data - prints data of an elf
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
  *Return: nothing
  */
 void print_data(unsigned char *e_ident)
@@ -97,7 +95,7 @@ void print_data(unsigned char *e_ident)
 }
 /**
  *print_version - prints a version of an elf
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
  *Return : nothing
  */
 void print_version(unsigned char *e_ident)
@@ -117,7 +115,7 @@ void print_version(unsigned char *e_ident)
 }
 /**
  *print_osabi - function that print osabi
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
  *Return: nothing
  */
 void print_osabi(unsigned char *e_ident)
@@ -162,17 +160,17 @@ void print_osabi(unsigned char *e_ident)
 }
 /**
  *print_abi - Prints the ABI version.
- *@e_indent: pointer to an array.
+ *@e_ident: pointer to an array.
  *Return: nothing
  */
 void print_abi(unsigned char *e_ident)
 {
-	printf("  ABI Version:                       %d\n",
-	       e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n", e_ident[EI_ABIVERSION]);
 }
 /**
  *print_type - function print type of an elf
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
+ *@e_type: type of elf
  *Return: nothing
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
@@ -205,7 +203,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 /**
  *print_entry - function used to print entry
- *@e_indent: pointer to an array
+ *@e_ident: pointer to an array
  *@e_entry: pointer to entry
  *Return: nothing
  */
@@ -219,7 +217,6 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 			  ((e_entry >> 8) & 0xFF00FF);
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
-
 	if (e_ident[EI_CLASS] == ELFCLASS32)
 	{
 		printf("%#x\n", (unsigned int)e_entry);
@@ -238,8 +235,7 @@ void close_elf(int elf)
 {
 	if (close(elf) == -1)
 	{
-		dprintf(STDERR_FILENO,
-			"Error: Can't close fd %d\n", elf);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
 }
