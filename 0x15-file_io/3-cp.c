@@ -32,6 +32,19 @@ void close_f(int file)
 	}
 }
 /**
+ * check_argc - checks for arguments
+ * @argc: number of arguments
+ * Return: nothing
+ */
+void check_argc(int argc)
+{
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+}
+/**
  *main - the main function of program
  *@argc: count of args
  *@argv: args vector
@@ -42,41 +55,37 @@ int main(int argc, char *argv[])
 	int file_from, file_to, r, w;
 	char *buff;
 
-	if (argc != 3)
-	{
-	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-	exit(97);
-	}
+	check_argc(argc);
 	buff = buff_creat(argv[2]);
 	file_from = open(argv[1], O_RDONLY);
 	file_to = open(argv[2], O_TRUNC | O_WRONLY | O_CREAT, 0664);
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-                free(buff);
-                exit(99);
+		free(buff);
+		exit(99);
 	}
 	r = read(file_from, buff, 1024);
 	while (r > 0)
 	{
-	if (file_from == -1 || r == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buff);
-		exit(98);
-	}
-	w = write(file_to, buff, r);
-	if (w == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		free(buff);
-		close_f(file_from);
-		close_f(file_to);
-		exit(99);
-	}
+		if (file_from == -1 || r == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			free(buff);
+			exit(98);
+		}
+		w = write(file_to, buff, r);
+		if (w == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			free(buff);
+			close_f(file_from);
+			close_f(file_to);
+			exit(99);
+		}
 		r = read(file_from, buff, 1024);
-		file_to = open(argv[2], O_WRONLY | O_APPEND);
 	}
+	file_to = open(argv[2], O_WRONLY | O_APPEND);
 	free(buff);
 	close_f(file_from);
 	close_f(file_to);
