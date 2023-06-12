@@ -49,6 +49,13 @@ int main(int argc, char *argv[])
 	}
 	buff = buff_creat(argv[2]);
 	file_from = open(argv[1], O_RDONLY);
+	file_to = open(argv[2], O_TRUNC | O_WRONLY | O_CREAT, 0664);
+	if (file_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+                free(buff);
+                exit(99);
+	}
 	r = read(file_from, buff, 1024);
 	while (r > 0)
 	{
@@ -58,12 +65,13 @@ int main(int argc, char *argv[])
 		free(buff);
 		exit(98);
 	}
-	file_to = open(argv[2], O_TRUNC | O_WRONLY | O_CREAT, 0664);
 	w = write(file_to, buff, r);
-	if (file_to == -1 || w == -1)
+	if (w == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		free(buff);
+		close_f(file_from);
+		close_f(file_to);
 		exit(99);
 	}
 		r = read(file_from, buff, 1024);
