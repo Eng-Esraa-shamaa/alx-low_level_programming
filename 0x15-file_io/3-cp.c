@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 	r = read(file_from, buff, 1024);
-	while (r > 0)
+	do
 	{
 		if (file_from == -1 || r == -1)
 		{
@@ -82,8 +82,8 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 		r = read(file_from, buff, 1024);
-	}
-	file_to = open(argv[2], O_WRONLY | O_APPEND);
+		file_to = open(argv[2], O_WRONLY | O_APPEND);
+	}while (r > 0);
 	close_f(file_to);
 	free(buff);
 	close_f(file_from);
