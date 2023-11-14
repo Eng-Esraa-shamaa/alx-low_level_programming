@@ -1,7 +1,7 @@
 #include "search_algos.h"
 /**
  *jump_search - search for val in array using Jump search algo
- *@array: array we search in 
+ *@array: array
  *@size: size of array
  *@value: value to search
  *Return: the searched val
